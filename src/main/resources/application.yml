@@ -1,0 +1,12 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  data:
+    mongodb:
+      database: recipes
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

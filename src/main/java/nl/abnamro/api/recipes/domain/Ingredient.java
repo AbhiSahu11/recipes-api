@@ -1,23 +1,44 @@
 package nl.abnamro.api.recipes.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
-import java.math.BigDecimal;
 
-@Document(collection = "Ingredient")
-@JsonIgnoreProperties({"id", "createdDate", "lastModifiedDate", "createdBy", "lastModifiedBy"})
+import javax.persistence.*;
+
+
+@JsonIgnoreProperties({"id","createdDate", "lastModifiedDate", "createdBy", "lastModifiedBy"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class Ingredient extends AbstractBaseEntity {
+@Entity
+public class Ingredient {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String description;
-    private BigDecimal amount;
+    private Double amount;
+    @Enumerated(EnumType.STRING)
     private UnitOfMeasure uom;
+    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Recipe.class)
+    @JsonIgnore
+    private Recipe recipe;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ingredient )) return false;
+        return id != null && id.equals(((Ingredient) o).getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }

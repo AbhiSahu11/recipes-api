@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -46,8 +45,6 @@ class RecipeControllerTest {
     private RecipeRequest recipeRequest;
     private Recipe recipe;
 
-    @MockBean
-    private MappingMongoConverter mappingMongoConverter;
 
     @BeforeEach
     void setUp() {
@@ -56,7 +53,7 @@ class RecipeControllerTest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(Ingredient.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toSet()))
+                .ingredients(Stream.of(Ingredient.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toSet()))
                 .instructions("First step , Second step, Third step")
                 .build();
     }
@@ -69,7 +66,7 @@ class RecipeControllerTest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(Ingredient.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toSet()))
+                .ingredients(Stream.of(Ingredient.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toSet()))
                 .instructions("First step , Second step, Third step")
                 .build();
 
@@ -96,7 +93,7 @@ class RecipeControllerTest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(IngredientRequest.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toList()))
+                .ingredients(Stream.of(IngredientRequest.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toList()))
                 .instructions("First step , Second step, Third step")
                 .build();
 

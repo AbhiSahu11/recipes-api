@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class IngredientRequest {
 
     private String description;
-    private BigDecimal amount;
+    private Double amount;
     private UnitOfMeasure uom;
 
 }

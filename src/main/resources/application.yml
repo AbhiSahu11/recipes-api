@@ -3,9 +3,23 @@ server:
     context-path: /api
 
 spring:
-  data:
-    mongodb:
-      database: recipes
+  datasource:
+    url: jdbc:h2:mem:mydb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+
+
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
 
 springdoc:
   swagger-ui:

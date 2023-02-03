@@ -22,7 +22,7 @@ class IngredientRepositoryTest {
     public void setup(){
         ingredient = Ingredient.builder()
                 .description("Meat")
-                .amount(BigDecimal.valueOf(4))
+                .amount(Double.valueOf(4))
                 .uom(UnitOfMeasure.kg)
                 .build();
     }
@@ -46,7 +46,7 @@ class IngredientRepositoryTest {
         //given
         Ingredient ingredientTwo = Ingredient.builder()
                 .description("Paneer")
-                .amount(BigDecimal.valueOf(700))
+                .amount(Double.valueOf(700))
                 .uom(UnitOfMeasure.gr)
                 .build();
 

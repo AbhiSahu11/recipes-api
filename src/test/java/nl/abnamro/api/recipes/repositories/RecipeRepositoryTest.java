@@ -35,7 +35,7 @@ public class RecipeRepositoryTest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(Ingredient.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toSet()))
+                .ingredients(Stream.of(Ingredient.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toSet()))
                 .instructions("First step , Second step, Third step")
                 .build();
     }
@@ -65,7 +65,7 @@ public class RecipeRepositoryTest {
                 .description("My Second recipe")
                 .category(Category.NON_VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(Ingredient.builder().description("Meat").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.kg).build()).collect(Collectors.toSet()))
+                .ingredients(Stream.of(Ingredient.builder().description("Meat").amount(Double.valueOf(5)).uom(UnitOfMeasure.kg).build()).collect(Collectors.toSet()))
                 .instructions("First step , Second step, Third step")
                 .build();
 

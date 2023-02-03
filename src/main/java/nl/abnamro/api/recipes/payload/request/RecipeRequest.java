@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @Builder
 public class RecipeRequest {
-
     @NotBlank
     private String name;
     private String description;

@@ -1,9 +1,13 @@
 package nl.abnamro.api.recipes.repositories;
 
 import nl.abnamro.api.recipes.domain.Recipe;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RecipeRepository extends MongoRepository<Recipe, String>, QuerydslPredicateExecutor<Recipe> {
+import java.util.List;
+
+public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+
+    List<Recipe> findAll(Specification<Recipe> specification);
 
 }

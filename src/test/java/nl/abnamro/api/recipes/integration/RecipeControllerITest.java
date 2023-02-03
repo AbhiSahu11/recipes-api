@@ -64,7 +64,7 @@ public class RecipeControllerITest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(IngredientRequest.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toList()))
+                .ingredients(Stream.of(IngredientRequest.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toList()))
                 .instructions("First step , Second step, Third step")
                 .build();
     }
@@ -102,7 +102,7 @@ public class RecipeControllerITest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(IngredientRequest.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toList()))
+                .ingredients(Stream.of(IngredientRequest.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build()).collect(Collectors.toList()))
                 .instructions("First step , Second step, Third step")
                 .build();
         // When
@@ -141,7 +141,7 @@ public class RecipeControllerITest {
     void givenUnknownUnitOfMeasure_whenPostRecipe_thenReturnBadRequest() throws Exception {
         // Given - recipeRequest is in setUp method
         JsonNode json = objectMapper.readTree(objectMapper.writeValueAsString(recipeRequest));
-        JsonNode ingredientJson = objectMapper.readTree(objectMapper.writeValueAsString(IngredientRequest.builder().description("Sugar").amount(BigDecimal.valueOf(5)).build()));
+        JsonNode ingredientJson = objectMapper.readTree(objectMapper.writeValueAsString(IngredientRequest.builder().description("Sugar").amount(Double.valueOf(5)).build()));
         ((ObjectNode) ingredientJson).put("uom", "gram");
         ArrayNode array = objectMapper.createArrayNode();
         array.add(ingredientJson);
@@ -168,7 +168,7 @@ public class RecipeControllerITest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(ingredientRepository.save(Ingredient.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build())).collect(Collectors.toSet()))
+                .ingredients(Stream.of(ingredientRepository.save(Ingredient.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build())).collect(Collectors.toSet()))
                 .instructions("First step , Second step, Third step")
                 .build());
 
@@ -203,7 +203,7 @@ public class RecipeControllerITest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(ingredientRepository.save(Ingredient.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build())).collect(Collectors.toSet()))
+                .ingredients(Stream.of(ingredientRepository.save(Ingredient.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build())).collect(Collectors.toSet()))
                 .instructions("First step , Second step, Third step")
                 .build());
         RecipeRequest recipeRequest = recipeMapper.toDto(recipe);
@@ -231,7 +231,7 @@ public class RecipeControllerITest {
                 .description("My first recipe")
                 .category(Category.VEGETARIAN)
                 .servings(10)
-                .ingredients(Stream.of(ingredientRepository.save(Ingredient.builder().description("Sugar").amount(BigDecimal.valueOf(5)).uom(UnitOfMeasure.gr).build())).collect(Collectors.toSet()))
+                .ingredients(Stream.of(ingredientRepository.save(Ingredient.builder().description("Sugar").amount(Double.valueOf(5)).uom(UnitOfMeasure.gr).build())).collect(Collectors.toSet()))
                 .instructions("First step , Second step, Third step")
                 .build());
 

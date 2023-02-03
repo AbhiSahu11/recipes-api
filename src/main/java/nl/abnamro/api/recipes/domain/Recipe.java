@@ -5,27 +5,30 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Document(collection = "Recipe")
-@JsonIgnoreProperties({"createdBy", "lastModifiedBy"})
+
+//@JsonIgnoreProperties({"id","recipe"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class Recipe extends AbstractBaseEntity {
-
+@Entity
+public class Recipe {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Category category;
     private Integer servings;
-
-    @DBRef
-    private Set<Ingredient> ingredients = new HashSet<>();
-
     private String instructions;
+
+    @OneToMany(mappedBy="recipe",cascade = CascadeType.ALL)
+    private Set<Ingredient> ingredients=new HashSet<>();
 
 }

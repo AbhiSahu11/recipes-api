@@ -12,7 +12,7 @@ public class OpenApiConfig {
     public OpenAPI RecipesAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Recipes API")
+                        .title("Recipes API Test ")
                         .description("This is a API Implementation for the demonstration of Recipes Using Spring Boot 2 .")
                         .version("v1.0"));
 
